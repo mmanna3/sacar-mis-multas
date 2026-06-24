@@ -20,7 +20,7 @@ import imgIceland from "../imports/beautiful-landscapes-iceland-while-travelling
 import logoImg from "../imports/Recurso_3_216x-8.png";
 
 const WHATSAPP =
-  "https://wa.me/5491166713389?text=Hola%2C%20quiero%20consultar%20por%20mis%20multas.";
+  "https://wa.me/5491166713389?text=Hola%2C%20quiero%20consultar%20por%20mis%20multas.%20Mi%20patente%20y%20mi%20DNI%20son%3A";
 const CONSULTA = "https://infraccionesba.gba.gob.ar/consulta-infraccion";
 
 const slides = [
