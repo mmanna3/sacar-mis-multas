@@ -19,7 +19,8 @@ import imgSunset from "../imports/red-car-highway-sunset-drive-motion-road.jpg";
 import imgIceland from "../imports/beautiful-landscapes-iceland-while-travelling.jpg";
 import logoImg from "../imports/Recurso_3_216x-8.png";
 
-const WHATSAPP = "https://wa.me/";
+const WHATSAPP =
+  "https://wa.me/5491166713389?text=Hola%2C%20quiero%20consultar%20por%20mis%20multas.";
 const CONSULTA = "https://infraccionesba.gba.gob.ar/consulta-infraccion";
 
 const slides = [
@@ -519,31 +520,41 @@ export default function App() {
             Queremos que el proceso sea lo menos estresante posible para vos. Lo resolvemos en tres pasos simples.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
-            {steps.map(({ number, Icon, title, desc }, i) => (
-              <div key={i} className="relative">
-                <GlassCardLight className="p-8 hover:shadow-xl hover:-translate-y-1 cursor-default h-full">
-                  <div
-                    style={{ ...display, color: "rgba(255,194,0,0.25)" }}
-                    className="font-black text-7xl leading-none mb-4 select-none"
-                  >
-                    {number}
-                  </div>
-                  <div className="mb-4">
-                    <Icon size={26} style={{ color: "#B38800" }} />
-                  </div>
-                  <h3 style={display} className="font-bold text-[20px] text-[#111111] mb-3 leading-tight">
-                    {title}
-                  </h3>
-                  <p className="text-[#555555] text-[15px] leading-relaxed">{desc}</p>
-                </GlassCardLight>
-                {i < steps.length - 1 && (
-                  <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20">
-                    <ArrowRight size={20} className="text-[#B38800]/50" />
-                  </div>
-                )}
-              </div>
-            ))}
+          <div className="flex flex-col md:flex-row md:items-stretch gap-5 md:gap-0">
+            {steps.flatMap(({ number, Icon, title, desc }, i) => {
+              const card = (
+                <div key={`step-${i}`} className="flex-1 min-w-0">
+                  <GlassCardLight className="p-8 hover:shadow-xl hover:-translate-y-1 cursor-default h-full">
+                    <div
+                      style={{ ...display, color: "rgba(255,194,0,0.25)" }}
+                      className="font-black text-7xl leading-none mb-4 select-none"
+                    >
+                      {number}
+                    </div>
+                    <div className="mb-4">
+                      <Icon size={26} style={{ color: "#B38800" }} />
+                    </div>
+                    <h3 style={display} className="font-bold text-[20px] text-[#111111] mb-3 leading-tight">
+                      {title}
+                    </h3>
+                    <p className="text-[#555555] text-[15px] leading-relaxed">{desc}</p>
+                  </GlassCardLight>
+                </div>
+              );
+
+              if (i === steps.length - 1) return [card];
+
+              return [
+                card,
+                <div
+                  key={`arrow-${i}`}
+                  className="hidden md:flex items-center justify-center shrink-0 px-2"
+                  aria-hidden
+                >
+                  <ArrowRight size={20} className="text-[#B38800]/50" />
+                </div>,
+              ];
+            })}
           </div>
         </div>
       </section>
